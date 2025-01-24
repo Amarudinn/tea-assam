@@ -355,7 +355,7 @@ async function initializeWeb3() {
 async function updateAccountBalance() {
     const balanceElement = document.getElementById('balance');
     const balance = await tokenContract.methods.balanceOf(accounts[0]).call();
-    const formattedBalance = (balance / 10 ** 18).toFixed(6);
+    const formattedBalance = (balance / 10 ** 18).toFixed(8);
     balanceElement.textContent = formattedBalance;
 }
 
