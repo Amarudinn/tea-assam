@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/images/favicon.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon.png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Stake AIT Token</title>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        Pixelify: ['"Roboto Mono"', 'monospace'],
+                        Nunito: ['"Nunito Sans"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-[#0F0D18]">
+
+    <div class="my-6 lg:flex lg:justify-center">
+        <div class="flex items-center justify-between px-1 lg:w-1/2">
+            <div class="relative p-2">
+                <div class="absolute -top-2 right-2">
+                    <div class="rounded-md text-[16px] font-bold text-[#DDDDDD]">Testnet</div>
+                </div>
+                <div class="text-[#DDDDDD] text-[24px] font-bold">Airdrop Intelligent</div>
+            </div>
+            <div
+                class="flex items-center px-4 py-[4px] text-[16px] bg-[#8DE98C] text-[#0F0D18] hover:bg-[#66AA67] hover:text-[#DDDDDD] rounded-md font-Nunito">
+                <img src="/images/metamask.png" alt="" class="w-5 h-5 mr-1">
+                <button id="connectButton" onclick="init()">Connect Wallet</button>
+            </div>
+        </div>
+    </div>
+
+    <hr class="border-t border-gray-600">
+
+
+    <div class="md:flex md:justify-center mt-10 mb-10 md:mb-20">
+        <div class="flex items-center justify-between w-1/2 px-4">
+            <a href="/index.html" class="text-[#DDDDDD] py-1 px-2 hover:bg-slate-700 rounded"><i
+                    class="fa-solid fa-arrow-left"></i> Back to Menu</a>
+        </div>
+    </div>
+
+    <div class="w-full flex justify-center">
+        <div
+            class="max-w-full h-auto py-4 px-4 mx-4 mt-4 mb-10 backdrop-blur-lg bg-white/5 font-Pixelify rounded-lg shadow-md">
+            <div class="flex justify-between">
+                <h1 class="text-[24px] font-bold text-[#DDDDDD]">/Stake AIT Token</h1>
+                <div class="flex">
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center mt-2 mb-4">
+                <div class="flex items-center">
+                    <div class="w-9 h-9 mr-2"><img src="/images/AIT.png" alt=""></div>
+                    <div class="text-[18px] text-[#DDDDDD] font-Pixelify">Stake AIT</div>
+                </div>
+                <button id="claimButton"
+                    class="bg-[#8DE98C] text-[#0F0D18] text-[16px] block hover:bg-[#66AA67] hover:text-[#DDDDDD] py-1 px-2 ml-1 font-semibold rounded-md font-Nunito">Faucet
+                    AIT</button>
+            </div>
+
+            <div class="text-[18px] font-semibold mb-2 text-[#DDDDDD]">Balance: <span class="text-[18px]"
+                    id="balance"></span><span class="text-[16px]"> AIT</span></div>
+
+            <div class="mb-8">
+                <div
+                    class="pt-2 pb-4 px-2 mb-4 flex flex-col justify-center-center rounded-lg shadow-lg backdrop-blur-lg bg-white/5">
+                    <label for="stakeAmount" class="text-[#DDDDDD]" id="stakeAmountLabel">Stake :</label>
+                    <div class="relative group">
+                        <!-- Icon -->
+                        <i
+                            class="absolute right-0 -top-7 fa-solid fa-circle-info text-[#8DE98C] hover:text-[#66AA67] text-[20px] cursor-pointer"></i>
+
+                        <!-- Tooltip -->
+                        <div
+                            class="absolute right-0 transform -translate-y-32 mt-2 hidden group-hover:block bg-gray-800 text-white text-sm rounded-md px-4 py-2 w-64 text-center shadow-lg">
+                            If you want to add stake / unstake, please claim the reward first.
+                        </div>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex items-center justify-center">
+                            <div class="flex w-full py-[2px] px-[2px] border-2 border-[#DDDDDD] rounded-md">
+                                <input id="stakeAmount" type="text"
+                                    class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none"
+                                    placeholder="Enter amount">
+                                <button
+                                    class="bg-[#8DE98C] text-[16px] text-[#0F0D18] py-1 px-2 ml-2 hover:bg-[#66AA67] hover:text-[#DDDDDD] font-semibold rounded-md font-Nunito"
+                                    id="maxStakeAmount" onclick="setMaxStakeAmount()">Max</button>
+                            </div>
+                            <button
+                                class="bg-[#8DE98C] text-[#0F0D18] text-[18px] block hover:bg-[#66AA67] hover:text-[#DDDDDD] px-3 py-1 ml-1 font-semibold rounded-md font-Nunito"
+                                onclick="stake()">Stake</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="pt-2 pb-4 px-2 mb-4 flex flex-col justify-center-center rounded-lg shadow-lg backdrop-blur-lg bg-white/5">
+                    <label for="unstakeAmount" class="text-[#DDDDDD]" id="stakeAmountLabel">Unstake :</label>
+                    <div class="relative group">
+                        <!-- Icon -->
+                        <i
+                            class="absolute right-0 -top-7 fa-solid fa-circle-info text-[#8DE98C] hover:text-[#66AA67] text-[20px] cursor-pointer"></i>
+
+                        <!-- Tooltip -->
+                        <div
+                            class="absolute right-0 transform -translate-y-32 mt-2 hidden group-hover:block bg-gray-800 text-white text-sm rounded-md px-4 py-2 w-64 text-center shadow-lg">
+                            If you want to add stake / unstake, please claim the reward first.
+                        </div>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex items-center justify-center">
+                            <div class="flex w-full py-[2px] px-[2px] border-2 border-[#DDDDDD] rounded-md">
+                                <input id="unstakeAmount" type="text"
+                                    class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none"
+                                    placeholder="Enter amount">
+                                <button
+                                    class="bg-[#8DE98C] text-[16px] text-[#0F0D18] py-1 px-2 ml-2 hover:bg-[#66AA67] hover:text-[#DDDDDD] font-semibold rounded-md font-Nunito"
+                                    id="maxStakeAmount" onclick="setMaxUnstakeAmount()">Max</button>
+                            </div>
+                            <button
+                                class="bg-[#8DE98C] text-[#0F0D18] text-[18px] block hover:bg-[#66AA67] hover:text-[#DDDDDD] px-3 py-1 ml-1 font-semibold rounded-md font-Nunito"
+                                onclick="unstakePartial()">Unstake</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 mb-6">
+                <div class="flex flex-col items-center p-2 rounded-lg backdrop-blur-lg bg-white/5 shadow-lg">
+                    <div class="text-[#DDDDDD] font-semibold text-[20px]">Rewards</div>
+                    <div class="text-[#DDDDDD] font-semibold text-[16px]">
+                        <span id="rewardAmount"></span> TEA
+                    </div>
+                    <button
+                        class="bg-[#8DE98C] py-[2px] px-2 text-[20px] text-[#0F0D18] hover:bg-[#66AA67] hover:text-[#DDDDDD] mx-auto block rounded-md font-Nunito"
+                        onclick="claimReward()">Claim</button>
+                </div>
+                <div class="flex flex-col items-center p-2 rounded-lg backdrop-blur-lg bg-white/5 shadow-lg">
+                    <div class="text-[#DDDDDD] font-semibold text-[20px]">Staked</div>
+                    <div class="text-[#DDDDDD] font-semibold text-[16px]">
+                        <span id="stakedAmount"></span> AIT
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center gap-2 text-[#DDDDDD]">
+                <a class="text-[26px]" href="https://x.com/m_amarudinn2"><i class="fa-brands fa-x-twitter"></i></a>
+                <a class="text-[26px]" href="https://t.me/AirdropIntelligent"><i class="fa-brands fa-telegram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/stake/ait.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.4/ethers.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</body>
+
+</html>
