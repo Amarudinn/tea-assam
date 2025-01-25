@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" href="/images/favicon.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="/images/favicon.png" sizes="16x16">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+		rel="stylesheet">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<title>Sports Betting</title>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					fontFamily: {
+						Pixelify: ['"Roboto Mono"', 'monospace'],
+						Nunito: ['"Nunito Sans"', 'serif'],
+					}
+				}
+			}
+		}
+	</script>
+</head>
+
+<body class="bg-[#0F0D18]">
+		<div class="my-6 lg:flex lg:justify-center">
+			<div class="flex items-center justify-between px-1 lg:w-1/2">
+				<div class="relative p-2">
+					<div class="absolute -top-2 right-2">
+						<div class="rounded-md text-[16px] font-bold text-[#DDDDDD]">Testnet</div>
+					</div>
+					<div class="text-[#DDDDDD] text-[24px] font-bold">Airdrop Intelligent</div>
+				</div>
+				<div
+					class="flex items-center px-4 py-[4px] text-[16px] bg-[#8DE98C] text-[#0F0D18] hover:bg-[#66AA67] hover:text-[#DDDDDD] rounded-md font-Nunito">
+					<img src="/images/metamask.png" alt="" class="w-5 h-5 mr-1">
+					<button id="connectButton">Connect Metamask</button>
+					<button id="walletConnect" style="display: none;"><span id="balance">0</span> TEA</button>
+				</div>
+			</div>
+		</div>
+
+		<hr class="border-t border-gray-600">
+
+		<div class="md:flex md:justify-center mt-10 mb-10 md:mb-20">
+			<div class="flex items-center justify-between w-1/2 px-4">
+				<a href="/index.html" class="text-[#DDDDDD] py-1 px-2 hover:bg-slate-700 rounded"><i
+						class="fa-solid fa-arrow-left"></i> Back to Menu</a>
+			</div>
+		</div>
+
+		<h2 id="hDua" class="text-[24px] text-[#DDDDDD] flex justify-center">Please connect metamask first</h2>
+
+		<div id="card" style="display: none;" class="w-full flex justify-center">
+			<div
+				class="max-w-full h-auto py-4 px-4 mx-4 mt-4 mb-10 backdrop-blur-lg bg-white/5 font-Pixelify rounded-lg shadow-md">
+				<div class="flex justify-between mb-4">
+					<h1 class="text-[24px] font-bold text-[#DDDDDD]">/Sports Betting</h1>
+					<button onclick="withdrawEth()"
+						class="bg-[#8DE98C] text-[16px] text-[#0F0D18] py-1 px-2 hover:bg-[#66AA67] hover:text-[#DDDDDD] font-semibold rounded-md font-Nunito">Withdraw</button>
+				</div>
+
+					<div class="text-[18px] font-semibold text-[#DDDDDD] mb-2">Balance: <span
+							id="depositBalance">0</span>
+						TEA</div>
+
+				<div class="flex items-center justify-center mb-6">
+					<div class="flex w-full py-[2px] px-[2px] border-2 border-[#DDDDDD] rounded-md">
+						<input type="number" id="depositAmount"
+							class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none" placeholder="Deposit Amount"
+							step="1" min="1">
+					</div>
+					<button onclick="depositEth()"
+						class="bg-[#8DE98C] text-[16px] text-[#0F0D18] py-1 px-2 ml-2 hover:bg-[#66AA67] hover:text-[#DDDDDD] font-semibold rounded-md font-Nunito">Deposit</button>
+				</div>
+
+				<div>
+					<div class="flex flex-col justify-center items-center">
+						<p class="text-[14px] text-[#DDDDDD]">Australian Open, Final</p>
+						<h2 class="text-[18px] text-[#DDDDDD]">Sinner J. - Zverev A.</h2>
+					</div>
+
+					<div class="flex w-full py-[2px] px-[2px] mb-2 border-2 border-[#DDDDDD] rounded-md">
+						<input type="number" id="betAmount" class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none"
+							placeholder="Bet Amount" step="1" min="1" disabled>
+					</div>
+					
+					<div class="grid grid-cols-2 gap-2 w-full">
+						<button onclick="placeBet(1)" id="button1"
+							class="bg-[#8DE98C] text-[16px] text-[#0F0D18] py-1 px-2 hover:bg-[#66AA67] hover:text-[#DDDDDD] font-semibold rounded-md font-Nunito" disabled>Sinner J</button>
+						<!-- <button onclick="placeBet(2)" id="button2"
+							class="bg-[#8DE98C] text-[16px] text-[#0F0D18] py-1 px-2 hover:bg-[#66AA67] hover:text-[#DDDDDD] font-semibold rounded-md font-Nunito" disabled>Draw</button> -->
+						<button onclick="placeBet(3)" id="button3"
+							class="bg-[#8DE98C] text-[16px] text-[#0F0D18] py-1 px-2 hover:bg-[#66AA67] hover:text-[#DDDDDD] font-semibold rounded-md font-Nunito" disabled>Zverev A</button>
+					</div>
+					
+					<p id="timerDisplay" class="text-[#DDDDDD] mt-2 mb-8"></p>
+				</div>
+
+				<div class="flex justify-center gap-2 text-[#DDDDDD]">
+					<a class="text-[26px]" href="https://x.com/m_amarudinn2"><i class="fa-brands fa-x-twitter"></i></a>
+					<a class="text-[26px]" href="https://t.me/AirdropIntelligent"><i
+							class="fa-brands fa-telegram"></i></a>
+				</div>
+			</div>
+		</div>
+
+	<script src="/sportsbetting/sports.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.4/ethers.umd.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</body>
+
+</html>
