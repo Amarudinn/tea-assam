@@ -106,8 +106,8 @@
 
 			<div>
 				<div class="flex flex-col justify-center items-center">
-					<p class="text-[14px] text-[#DDDDDD]">Australian Open, Final</p>
-					<h2 class="text-[18px] text-[#DDDDDD]">Sinner J. - Zverev A.</h2>
+					<p class="text-[14px] text-[#DDDDDD]">Preimer League</p>
+					<h2 class="text-[18px] text-[#DDDDDD]">Fulham - Man Utd</h2>
 				</div>
 
 				<div class="p-3 flex flex-col justify-center-center rounded-lg shadow-lg backdrop-blur-lg bg-white/5">
@@ -116,22 +116,22 @@
 							placeholder="Bet Amount" step="1" min="1" disabled>
 					</div>
 
-					<div class="grid grid-cols-2 gap-2 w-full">
+					<div class="grid grid-cols-3 gap-2 w-full">
 						<button onclick="placeBet(1)" id="button1"
 							class="bg-[#8DE98C] text-[16px] text-[#0F0D18] py-1 px-2 hover:bg-[#66AA67] hover:text-[#DDDDDD] font-semibold rounded-md font-Nunito"
-							disabled>Sinner J</button>
+							disabled>Fulham</button>
 						<button onclick="placeBet(2)" id="button2"
 							class="bg-[#8DE98C] text-[16px] text-[#0F0D18] py-1 px-2 hover:bg-[#66AA67] hover:text-[#DDDDDD] font-semibold rounded-md font-Nunito"
-							style="display: none;" disabled>Draw</button>
+							style="display: block;" disabled>Draw</button>
 						<button onclick="placeBet(3)" id="button3"
 							class="bg-[#8DE98C] text-[16px] text-[#0F0D18] py-1 px-2 hover:bg-[#66AA67] hover:text-[#DDDDDD] font-semibold rounded-md font-Nunito"
-							disabled>Zverev A</button>
+							disabled>Man Utd</button>
 					</div>
 				</div>
 
 				<p id="timerDisplay" class="text-[#DDDDDD] mt-1 pl-2 text-[14px]"></p>
 				<a href="#" id="historyButton" class="mt-1 pl-2 text-[14px] text-[#DDDDDD] underline">
-					History Match
+					Match History
 				</a>
 
 				<div id="menu"
@@ -141,9 +141,12 @@
 					</button>
 
 					<div class="h-full overflow-y-scroll direction-rtl pr-4">
-						<div class="direction-ltr mb-2 border-b border-gray-600">History Match</div>
+						<div class="direction-ltr mb-2 border-b border-gray-600">Match History</div>
 						<div class="direction-ltr pl-2 text-[14px]">
-							<p style="display: none;">Sinner J - Zverev A = Sinner J Win</p>
+							<div class="border-b border-gray-600">
+								<p>[26/01/2025]</p>
+								<p>Sinner J - Zverev A = Sinner J Win</p>
+							</div>
 						</div>
 					</div>
 				</div>
