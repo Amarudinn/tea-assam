@@ -216,7 +216,7 @@ async function connectMetamask() {
 async function updateBalance() {
     if (userAccount) {
         const balance = await web3.eth.getBalance(userAccount);
-        const etherBalance = parseFloat(web3.utils.fromWei(balance, 'ether')).toFixed(4);
+        const etherBalance = parseFloat(web3.utils.fromWei(balance, 'ether')).toFixed(2);
         document.getElementById('balance').textContent = etherBalance;
     }
 }
@@ -224,7 +224,8 @@ async function updateBalance() {
 async function updateDepositBalance() {
     try {
         const depositBalance = await contract.methods.getDepositBalance(userAccount).call();
-        document.getElementById('depositBalance').textContent = web3.utils.fromWei(depositBalance, 'ether');
+        const formattedBalance = (web3.utils.fromWei(depositBalance, 'ether') * 1).toFixed(2);
+        document.getElementById('depositBalance').textContent = formattedBalance;
     } catch (error) {
         console.error('Failed to fetch deposit balance:', error);
     }
@@ -234,7 +235,13 @@ async function depositEth() {
     const depositAmount = document.getElementById('depositAmount').value;
 
     if (!depositAmount || depositAmount <= 0) {
-        alert('Please enter a valid deposit amount');
+		Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: "Please enter a valid deposit amount",
+            showConfirmButton: false,
+            timer: 1500
+        });
         return;
     }
 
@@ -246,12 +253,24 @@ async function depositEth() {
             to: CONTRACT_ADDRESS,
             value: depositValue
         });
-        alert('Deposit successful!');
+		Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Deposit successful!",
+            showConfirmButton: false,
+            timer: 1500
+        });
         updateBalance();
         updateDepositBalance();
     } catch (error) {
         console.error('Deposit failed:', error);
-        alert('Failed to deposit. Check console for details.');
+		Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: "Failed to deposit",
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
 }
 
@@ -259,7 +278,13 @@ async function placeBet(option) {
     const betAmount = document.getElementById('betAmount').value;
 
     if (!betAmount || betAmount <= 0) {
-        alert('Please enter a valid bet amount');
+		Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: "Please enter a valid bet amount",
+            showConfirmButton: false,
+            timer: 1500
+        });
         return;
     }
 
@@ -267,23 +292,47 @@ async function placeBet(option) {
 
     try {
         await contract.methods.placeBet(option, betValue).send({ from: userAccount });
-        alert('Bet placed successfully!');
+		Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Bet placed successfully!",
+            showConfirmButton: false,
+            timer: 1500
+        });
         updateDepositBalance();
     } catch (error) {
         console.error('Bet placement failed:', error);
-        alert('Failed to place bet. Check console for details.');
+		Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: "Failed to place bet",
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
 }
 
 async function withdrawEth() {
     try {
         await contract.methods.withdraw().send({ from: userAccount });
-        alert('Withdrawal successful!');
+		Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Withdrawal successful!",
+            showConfirmButton: false,
+            timer: 1500
+        });
         updateBalance();
         updateDepositBalance();
     } catch (error) {
         console.error('Withdrawal failed:', error);
-        alert('Failed to withdraw. Check console for details.');
+		Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: "Failed to withdraw. Check console for details",
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
 }
 
@@ -303,11 +352,11 @@ const startDate = new Date(2025, 0, 25, 24, 0, 0); // January 25, 2025, 20:18:00
         if (now < startDate) {
             timerDisplay.textContent = `Betting starts in: ${formatTime(startDate - now)}`;
         } else if (now >= startDate && now <= endDate) {
-            timerDisplay.textContent = `Betting closed in: ${formatTime(endDate - now)}`;
+            timerDisplay.textContent = `Betting closes in: ${formatTime(endDate - now)}`;
             input.disabled = false;
             buttons.forEach(button => button.disabled = false);
         } else {
-            timerDisplay.textContent = "Betting has closed.";
+            timerDisplay.textContent = "Betting is closed.";
             input.disabled = true;
             buttons.forEach(button => button.disabled = true);
         }
@@ -322,6 +371,28 @@ const startDate = new Date(2025, 0, 25, 24, 0, 0); // January 25, 2025, 20:18:00
         return `${days}d ${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}m ${seconds.toString().padStart(2, '0')}s`;
     }
 
-    setInterval(updateUI, 1000); // Update every second
+    setInterval(updateUI, 1000);
+
+		const historyButton = document.getElementById("historyButton");
+		const menu = document.getElementById("menu");
+		const closeButton = document.getElementById("closeButton");
+	
+		const showMenu = (event) => {
+		  event.preventDefault();
+		  menu.classList.remove("hidden");
+		};
+	
+		const hideMenu = () => {
+		  menu.classList.add("hidden");
+		};
+	
+		historyButton.addEventListener("click", showMenu);
+	
+		closeButton.addEventListener("click", hideMenu);
+		document.addEventListener("click", (event) => {
+		  if (!menu.contains(event.target) && event.target !== historyButton) {
+			hideMenu();
+		  }
+		});
 
 document.getElementById('connectButton').addEventListener('click', connectMetamask);
