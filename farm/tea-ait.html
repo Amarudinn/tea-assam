@@ -81,14 +81,14 @@
                     <div class="mb-8">
                         <div
                             class="pt-2 pb-4 px-2 mb-4 flex flex-col justify-center-center rounded-lg shadow-lg backdrop-blur-lg bg-white/5">
-                            <label for="stakeAmount" class="text-[#DDDDDD]" id="stakeAmountLabel">Stake :</label>
+                            <label for="stakeAmount" class="text-[#DDDDDD]" id="stakeAmountLabel">Farm :</label>
                             <div class="relative group">
                                 <!-- Icon -->
                                 <i class="absolute right-0 -top-7 fa-solid fa-circle-info text-[#8DE98C] hover:text-[#66AA67] text-[20px] cursor-pointer"></i>
                                 
                                 <!-- Tooltip -->
                                 <div class="absolute right-0 transform -translate-y-32 mt-2 hidden group-hover:block bg-gray-800 text-white text-sm rounded-md px-4 py-2 w-64 text-center shadow-lg">
-                                    If you want to add stake / unstake, please claim the reward first.
+                                    If you want to add farm / remove, please claim the reward first.
                                 </div>
                             </div>
                             <div class="flex flex-col">
@@ -103,21 +103,21 @@
                                     </div>
                                     <button
                                         class="bg-[#8DE98C] text-[#0F0D18] text-[18px] block hover:bg-[#66AA67] hover:text-[#DDDDDD] px-3 py-1 ml-1 font-semibold rounded-md font-Nunito"
-                                        onclick="stake()">Stake</button>
+                                        onclick="stake()">Farm</button>
                                 </div>
                             </div>
                         </div>
 
                         <div
                             class="pt-2 pb-4 px-2 mb-4 flex flex-col justify-center-center rounded-lg shadow-lg backdrop-blur-lg bg-white/5">
-                            <label for="unstakeAmount" class="text-[#DDDDDD]" id="stakeAmountLabel">Unstake :</label>
+                            <label for="unstakeAmount" class="text-[#DDDDDD]" id="stakeAmountLabel">Remove :</label>
                             <div class="relative group">
                                 <!-- Icon -->
                                 <i class="absolute right-0 -top-7 fa-solid fa-circle-info text-[#8DE98C] hover:text-[#66AA67] text-[20px] cursor-pointer"></i>
                                 
                                 <!-- Tooltip -->
                                 <div class="absolute right-0 transform -translate-y-32 mt-2 hidden group-hover:block bg-gray-800 text-white text-sm rounded-md px-4 py-2 w-64 text-center shadow-lg">
-                                    If you want to add stake / unstake, please claim the reward first.
+                                    If you want to add farm / remove, please claim the reward first.
                                 </div>
                             </div>
                             <div class="flex flex-col">
@@ -132,7 +132,7 @@
                                     </div>
                                     <button
                                         class="bg-[#8DE98C] text-[#0F0D18] text-[18px] block hover:bg-[#66AA67] hover:text-[#DDDDDD] px-3 py-1 ml-1 font-semibold rounded-md font-Nunito"
-                                        onclick="unstakePartial()">Unstake</button>
+                                        onclick="unstakePartial()">Remove</button>
                                 </div>
                             </div>
                         </div>
@@ -149,7 +149,7 @@
                                 onclick="claimReward()">Claim</button>
                         </div>
                         <div class="flex flex-col items-center p-2 rounded-lg backdrop-blur-lg bg-white/5 shadow-lg">
-                            <div class="text-[#DDDDDD] font-semibold text-[20px]">Staked</div>
+                            <div class="text-[#DDDDDD] font-semibold text-[20px]">Farmed</div>
                             <div class="text-[#DDDDDD] font-semibold text-[16px]">
                                 <span id="stakedAmount"></span> LP
                             </div>
