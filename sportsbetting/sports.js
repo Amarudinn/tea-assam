@@ -336,8 +336,8 @@ async function withdrawEth() {
     }
 }
 
-const startDate = new Date(2025, 0, 2, 13, 0, 0); // January 25, 2025, 20:18:00
-    const endDate = new Date(2025, 2, 22, 0, 0, 0);   // January 25, 2025, 20:30:00
+const startDate = new Date(2025, 0, 3, 13, 0, 0); // January 25, 2025, 20:18:00
+    const endDate = new Date(2025, 0, 4, 1, 0, 0);   // January 25, 2025, 20:30:00
     const timerDisplay = document.getElementById("timerDisplay");
     const input = document.getElementById("betAmount");
     const buttons = [
