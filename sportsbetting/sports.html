@@ -106,101 +106,103 @@
 
 			<div>
 				<div class="flex flex-col justify-center items-center">
-					<p class="text-[14px] text-[#DDDDDD]">Italian Cup</p>
-					<h2 class="text-[18px] text-[#DDDDDD]">Atalanta - Bologna</h2>
-					<div
-						class="p-3 flex flex-col justify-center-center rounded-lg shadow-lg backdrop-blur-lg bg-white/5">
-						<div class="flex w-full py-[2px] px-[2px] mb-2 border-2 border-[#DDDDDD] rounded-md">
-							<input type="text" id="betAmount"
-								class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none" placeholder="Bet Amount"
-								step="1" min="1" disabled>
-						</div>
-
-						<div class="grid grid-cols-3 gap-2 w-full">
-							<button onclick="placeBet(1)" id="button1"
-								class="bg-[#8DE98C] text-[16px] text-[#0F0D18] py-1 px-2 hover:bg-[#66AA67] hover:text-[#DDDDDD] font-semibold rounded-md font-Nunito"
-								disabled>Atalanta</button>
-							<button onclick="placeBet(2)" id="button2"
-								class="bg-[#8DE98C] text-[16px] text-[#0F0D18] py-1 px-2 hover:bg-[#66AA67] hover:text-[#DDDDDD] font-semibold rounded-md font-Nunito"
-								style="display: block;" disabled>Draw</button>
-							<button onclick="placeBet(3)" id="button3"
-								class="bg-[#8DE98C] text-[16px] text-[#0F0D18] py-1 px-2 hover:bg-[#66AA67] hover:text-[#DDDDDD] font-semibold rounded-md font-Nunito"
-								disabled>Bologna</button>
-						</div>
-					</div>
+					<p class="text-[14px] text-[#DDDDDD]">NBA</p>
+					<h2 class="text-[18px] text-[#DDDDDD]">Thunder - Suns</h2>
 				</div>
-
-				<p id="timerDisplay" class="text-[#DDDDDD] mt-1 pl-2 text-[14px]"></p>
-				<a href="#" id="historyButton" class="mt-1 pl-2 text-[14px] text-[#DDDDDD] underline">
-					Match History
-				</a>
-
-				<div id="menu"
-					class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#DDDDDD] shadow-lg rounded-lg border p-2 hidden">
-					<button id="closeButton" class="absolute top-1 right-1 text-gray-500 hover:text-gray-700">
-						<i class="fas fa-times text-[28px]"></i>
-					</button>
-
-					<div class="h-full overflow-y-scroll direction-rtl pr-4">
-						<div class="direction-ltr mb-2 border-b border-gray-600">Match History</div>
-						<div class="direction-ltr pl-2 text-[14px]">
-							<div class="border-b border-gray-600">
-								<p>[26/01/2025]</p>
-								<p>Sinner J - Zverev A = Sinner J</p>
-							</div>
-							<div class="border-b border-gray-600">
-								<p>[27/01/2025]</p>
-								<p>Fulham - Man Utd = Man Utd</p>
-							</div>
-							<div class="border-b border-gray-600">
-								<p>[28/01/2025]</p>
-								<p>Miami Heat - Orlando Magic = Miami Heat</p>
-							</div>
-							<div class="border-b border-gray-600">
-								<p>[29/01/2025]</p>
-								<p>Sabres - Bruins = Sabres</p>
-							</div>
-							<div class="border-b border-gray-600">
-								<p>[30/01/2025]</p>
-								<p>Barcelona - Atalanta = Draw</p>
-							</div>
-							<div class="border-b border-gray-600">
-								<p>[31/01/2025]</p>
-								<p>As Roma - Frankfurt = As Roma</p>
-							</div>
-							<div class="border-b border-gray-600">
-								<p>[01/02/2025]</p>
-								<p>Newcastle - Fulham = Fulham</p>
-							</div>
-							<div class="border-b border-gray-600">
-								<p>[02/02/2025]</p>
-								<p>Arsenal - Man City = Arsenal</p>
-							</div>
-							<div class="border-b border-gray-600">
-								<p>[04/02/2025]</p>
-								<p>Chelsea - West Ham = Chelsea</p>
-							</div>
-							<!-- <div class="border-b border-gray-600">
-								<p>[05/02/2025]</p>
-								<p>Atalanta - Bologna = Atalanta</p>
-							</div> -->
-						</div>
+				<div class="p-3 flex flex-col justify-center-center rounded-lg shadow-lg backdrop-blur-lg bg-white/5">
+					<div class="flex w-full py-[2px] px-[2px] mb-2 border-2 border-[#DDDDDD] rounded-md">
+						<input type="text" id="betAmount" class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none"
+							placeholder="Bet Amount" step="1" min="1" disabled>
 					</div>
-				</div>
 
-				<div class="flex justify-center gap-2 mt-8 text-[#DDDDDD]">
-					<a class="text-[26px]" href="https://x.com/m_amarudinn2"><i class="fa-brands fa-x-twitter"></i></a>
-					<a class="text-[26px]" href="https://t.me/AirdropIntelligent"><i
-							class="fa-brands fa-telegram"></i></a>
+					<div class="grid grid-cols-2 gap-2 w-full">
+						<button onclick="placeBet(1)" id="button1"
+							class="bg-[#8DE98C] text-[16px] text-[#0F0D18] py-1 px-2 hover:bg-[#66AA67] hover:text-[#DDDDDD] font-semibold rounded-md font-Nunito"
+							disabled>Thunder</button>
+						<button onclick="placeBet(2)" id="button2"
+							class="bg-[#8DE98C] text-[16px] text-[#0F0D18] py-1 px-2 hover:bg-[#66AA67] hover:text-[#DDDDDD] font-semibold rounded-md font-Nunito"
+							style="display: none;" disabled>Draw</button>
+						<button onclick="placeBet(3)" id="button3"
+							class="bg-[#8DE98C] text-[16px] text-[#0F0D18] py-1 px-2 hover:bg-[#66AA67] hover:text-[#DDDDDD] font-semibold rounded-md font-Nunito"
+							disabled>Suns</button>
+					</div>
 				</div>
 			</div>
-		</div>
 
-		<script src="/sportsbetting/sports.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.4/ethers.umd.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+			<p id="timerDisplay" class="text-[#DDDDDD] mt-1 pl-2 text-[14px]"></p>
+			<a href="#" id="historyButton" class="mt-1 pl-2 text-[14px] text-[#DDDDDD] underline">
+				Match History
+			</a>
+
+			<div id="menu"
+				class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#DDDDDD] shadow-lg rounded-lg border p-2 hidden">
+				<button id="closeButton" class="absolute top-1 right-1 text-gray-500 hover:text-gray-700">
+					<i class="fas fa-times text-[28px]"></i>
+				</button>
+
+				<div class="h-full overflow-y-scroll direction-rtl pr-4">
+					<div class="direction-ltr mb-2 border-b border-gray-600">Match History</div>
+					<div class="direction-ltr pl-2 text-[14px]">
+						<div class="border-b border-gray-600">
+							<p>[26/01/2025]</p>
+							<p>Sinner J - Zverev A = Sinner J</p>
+						</div>
+						<div class="border-b border-gray-600">
+							<p>[27/01/2025]</p>
+							<p>Fulham - Man Utd = Man Utd</p>
+						</div>
+						<div class="border-b border-gray-600">
+							<p>[28/01/2025]</p>
+							<p>Miami Heat - Orlando Magic = Miami Heat</p>
+						</div>
+						<div class="border-b border-gray-600">
+							<p>[29/01/2025]</p>
+							<p>Sabres - Bruins = Sabres</p>
+						</div>
+						<div class="border-b border-gray-600">
+							<p>[30/01/2025]</p>
+							<p>Barcelona - Atalanta = Draw</p>
+						</div>
+						<div class="border-b border-gray-600">
+							<p>[31/01/2025]</p>
+							<p>As Roma - Frankfurt = As Roma</p>
+						</div>
+						<div class="border-b border-gray-600">
+							<p>[01/02/2025]</p>
+							<p>Newcastle - Fulham = Fulham</p>
+						</div>
+						<div class="border-b border-gray-600">
+							<p>[02/02/2025]</p>
+							<p>Arsenal - Man City = Arsenal</p>
+						</div>
+						<div class="border-b border-gray-600">
+							<p>[04/02/2025]</p>
+							<p>Chelsea - West Ham = Chelsea</p>
+						</div>
+						<div class="border-b border-gray-600">
+							<p>[05/02/2025]</p>
+							<p>Atalanta - Bologna = Bologna</p>
+						</div>
+						<!-- <div class="border-b border-gray-600">
+							<p>[06/02/2025]</p>
+							<p>Thunder - Suns = Suns</p>
+						</div> -->
+					</div>
+				</div>
+			</div>
+
+			<div class="flex justify-center gap-2 mt-8 text-[#DDDDDD]">
+				<a class="text-[26px]" href="https://x.com/m_amarudinn2"><i class="fa-brands fa-x-twitter"></i></a>
+				<a class="text-[26px]" href="https://t.me/AirdropIntelligent"><i class="fa-brands fa-telegram"></i></a>
+			</div>
+		</div>
+	</div>
+
+	<script src="/sportsbetting/sports.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.4/ethers.umd.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
 
 </html>
