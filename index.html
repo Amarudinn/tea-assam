@@ -1,19 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/images/favicon.png" sizes="32x32">
-    <link rel="icon" type="image" sizes="16x16">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="/src/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Airdrop Intelligent</title>
+    <title>STAKE</title>
+    <style>
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 10s linear infinite;
+        }
+    </style>
     <script>
         tailwind.config = {
             theme: {
@@ -28,98 +41,261 @@
     </script>
 </head>
 
-<body class="bg-[#0F0D18]">
+<body class="bg-slate-900">
 
-    <div class="w-full">
-        <div class="flex justify-between items-center py-4 lg:py-6">
-            <div class="lg:flex lg:items-center">
-                <div class="text-[#DDDDDD] text-[18px] ml-2 lg:ml-6 lg:mr-4 font-bold font-Pixelify">Airdrop Intelligent
+    <nav class="backdrop-blur-lg bg-white/5 border-gray-200">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <span class="self-center text-[16px] whitespace-nowrap text-slate-300 font-bold">AIRDROP INTELLIGENT</span>
+            </a>
+            <div class="flex justify-between items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <div
+                    class="flex items-center py-1 px-2 bg-green-400 text-slate-900 hover:bg-green-600 hover:text-slate-300 rounded-md cursor-pointer">
+                    <img src="/images/metamask.png" alt="images" class="w-5 h-5 mr-1">
+                    <button id="connectButton" class="cursor-pointer" onclick="init()">Connect Wallet</button>
                 </div>
-                <div class="gap-2 text-[#DDDDDD] hidden lg:block">
-                    <a class="text-[26px] hover:text-[#8DE98C]" target="_blank" href="https://x.com/m_amarudinn2"><i
-                            class="fa-brands fa-x-twitter"></i></a>
-                    <a class="text-[26px] hover:text-[#8DE98C]" target="_blank"
-                        href="https://t.me/AirdropIntelligent"><i class="fa-brands fa-telegram"></i></a>
-                </div>
+                <button data-collapse-toggle="navbar-cta" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-cta" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
             </div>
-            <div class="lg:hidden">
-                <div class="gap-2 text-[#DDDDDD]">
-                    <a class="text-[26px]" target="_blank" href="https://x.com/m_amarudinn2"><i
-                            class="fa-brands fa-x-twitter"></i></a>
-                    <a class="text-[26px]" target="_blank" href="https://t.me/AirdropIntelligent"><i
-                            class="fa-brands fa-telegram"></i></a>
-                </div>
-            </div>
-            <div class="mr-2 lg:mr-6">
-                <a href="https://www.teaswap.xyz/swap?outputCurrency=0xd8681C1F60Ba30982292CD22982Aa2A9f30adf2c"
-                    target="_blank"
-                    class="flex justify-center text-[#0F0D18] bg-[#8DE98C] hover:bg-[#66AA67] hover:text-[#DDDDDD] text-[16px] py-1 px-2 font-bold w-full rounded-md font-Nunito">Buy
-                    AIT</a>
-            </div>
-        </div>
-
-        <hr class="border-t border-gray-600">
-
-        <div class="text-[20px] text-[#8DE98C] mt-4 flex justify-center font-Pixelify">Build on TEA</span></div>
-
-        <div class="lg:w-1/2 lg:mx-auto mx-6">
-            <div class="flex flex-col mt-4 mb-10 lg:w-1/2 lg:mx-auto">
-                <div class="text-[20px] text-[#DDDDDD] mb-4 flex justify-center font-Pixelify">Select Menu</div>
-                <a href="/stake/ait.html"
-                    class="flex justify-center text-[#0F0D18] bg-[#8DE98C] hover:bg-[#66AA67] hover:text-[#DDDDDD] text-[16px] mb-4 py-2 font-bold w-full rounded-md font-Nunito">Stake
-                    AIT Earn TEA</a>
-                <a href="/farm/tea-ait.html"
-                    class="flex justify-center text-[#0F0D18] bg-[#8DE98C] hover:bg-[#66AA67] hover:text-[#DDDDDD] text-[16px] mb-4 py-2 font-bold w-full rounded-md font-Nunito">Farm
-                    LP (TEA/AIT) Earn TEA</a>
-                <a href="/stake/tea.html"
-                    class="relative flex justify-center text-[#0F0D18] bg-[#8DE98C] hover:bg-[#66AA67] hover:text-[#DDDDDD] text-[16px] mb-4 py-2 font-bold w-full rounded-md font-Nunito">Stake
-                    TEA Earn TEA <div class="absolute -top-3 right-0 bg-red-500 px-2 rounded"><span
-                            class="text-[12px] text-[#DDDDDD]">NEW</span></div></a>
-                <a href="/sportsbetting/sports.html"
-                    class="relative flex justify-center text-[#0F0D18] bg-[#8DE98C] hover:bg-[#66AA67] hover:text-[#DDDDDD] text-[16px] mb-4 py-2 font-bold w-full rounded-md font-Nunito">Sports
-                    Betting <div class="absolute -top-3 right-0 bg-red-500 px-2 rounded"><span
-                            class="text-[12px] text-[#DDDDDD]">NEW</span></div></a>
-                <a href="#"
-                    class="relative flex justify-center text-[#0F0D18] bg-[#8DE98C] hover:bg-[#66AA67] hover:text-[#DDDDDD] text-[16px] mb-4 py-2 font-bold w-full rounded-md font-Nunito">CoinFlip
-                    <div class="absolute -top-3 right-0 bg-red-500 px-2 rounded"><span
-                            class="text-[12px] text-[#DDDDDD]">COMING SOON</span></div>
-                </a>
-                <a href="#"
-                    class="relative flex justify-center text-[#0F0D18] bg-[#8DE98C] hover:bg-[#66AA67] hover:text-[#DDDDDD] text-[16px] mb-4 py-2 font-bold w-full rounded-md font-Nunito">Stake TEA Earn AIT
-                    <div class="absolute -top-3 right-0 bg-red-500 px-2 rounded"><span
-                            class="text-[12px] text-[#DDDDDD]">COMING SOON</span></div>
-                </a>
-                <a href="https://faucet-assam.tea.xyz/" target="_blank"
-                    class="flex justify-center text-[#0F0D18] bg-[#8DE98C] hover:bg-[#66AA67] hover:text-[#DDDDDD] text-[16px] mb-4 py-2 font-bold w-full rounded-md font-Nunito">Claim
-                    Faucet TEA</a>
-                <a href="/faucet/faucet-ait.html"
-                    class="flex justify-center text-[#0F0D18] bg-[#8DE98C] hover:bg-[#66AA67] hover:text-[#DDDDDD] text-[16px] py-2 font-bold w-full rounded-md font-Nunito">Claim
-                    Faucet AIT Token</a>
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+                <ul
+                    class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-500 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-3 rounded-sm bg-gray-700/80 text-slate-300 hover:bg-gray-700/50 hover:text-slate-300/80 md:bg-gray-700/80 md:text-slate-300 md:hover:bg-gray-700/50 md:hover:text-slate-300/80 md:py-1.5 md:px-4"
+                            aria-current="page">Stake</a>
+                    </li>
+                    <li>
+                        <a href="/feature/farm/farm.html"
+                            class="block py-2 px-3 rounded-sm bg-transparent text-slate-300 hover:bg-gray-700/80 md:py-1.5 md:px-4">Farm</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-3 rounded-sm bg-transparent text-slate-300 hover:bg-gray-700/80 md:py-1.5 md:px-4">Bridge</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-3 rounded-sm bg-transparent text-slate-300 hover:bg-gray-700/80 md:py-1.5 md:px-4">Sport
+                            Betting</a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
 
-        <div class="py-2 border-y lg:border-none border-gray-600">
-            <div class="text-[16px] lg:text-[18px] text-[#DDDDDD] flex justify-center font-Pixelify">Partner</div>
-        </div>
-
-        <div class="lg:w-1/2 lg:mx-auto mx-6">
-            <div class="flex flex-col mt-4 mb-10 lg:w-1/2 lg:mx-auto">
-                <a href="#"
-                    class="flex justify-center text-[#0F0D18] bg-[#8DE98C] hover:bg-[#66AA67] hover:text-[#DDDDDD] text-[16px] mb-4 py-2 font-bold w-full rounded-md font-Nunito">Stake
-                    Token Earn AIT</a>
-                <a href="#"
-                    class="flex justify-center text-[#0F0D18] bg-[#8DE98C] hover:bg-[#66AA67] hover:text-[#DDDDDD] text-[16px] mb-4 py-2 font-bold w-full rounded-md font-Nunito">Stake
-                    Token Earn AIT</a>
-            </div>
-        </div>
-
-        <div class="w-full py-4 border-t border-gray-600">
-            <div class="text-[12px] text-[#DDDDDD] flex justify-center font-Pixelify">This website was created by
-                @m_amarudin.</div>
+    <div class="overflow-hidden md:mx-auto md:w-1/2">
+        <div class="inline-block animate-marquee whitespace-nowrap text-slate-300">
+            If you want to add stake or unstake, please claim the reward first.
         </div>
     </div>
 
+    <div class="md:flex md:w-1/2 md:mx-auto">
+        <div class="text-slate-300 ml-4 mt-10 md:mt-20 mb-4 md:mb-0 flex-row justify-center items-center">
+            <h3 class="font-extrabold text-[20px] tracking-[1px]">TEA Staking</h3>
+            <h3 class="text-[14px]">Enjoy the rewards of staking with high APY</h3>
+        </div>
+    </div>
 
+    <div class="md:flex md:w-1/2 md:mx-auto md:mt-6">
+        <div class="container w-full h-full flex justify-center items-center">
+            <div
+                class="mt-4 md:mt-0 mx-2 px-4 pt-1 pb-4 w-full flex-row justify-center items-center backdrop-blur-lg bg-white/5 rounded-lg shadow-md">
+                <h3 class="text-[#DDDDDD] text-[20px] mb-2 pl-1 font-Nunito">Native Staking</h3>
+                <div class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
+                    <div class="text-[#DDDDDD]">Balance <i class="fa-solid fa-wallet text-[12px] text-green-400"></i></div>
+                    <div class="text-[#DDDDDD]">
+                        <span id="balance">0</span> <span>TEA</span>
+                    </div>
+                </div>
+                <div class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
+                    <div class="text-[#DDDDDD]">APY <i class="fa-solid fa-seedling text-[12px] text-green-400"></i></div>
+                    <div class="text-[#DDDDDD]">
+                        <span>500%</span>
+                    </div>
+                </div>
+                <div class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
+                    <div class="text-[#DDDDDD]">Staked <i class="fa-solid fa-lock text-[12px] text-green-400"></i></div>
+                    <div class="text-[#DDDDDD]">
+                        <span id="stakedAmount">0</span> TEA
+                    </div>
+                </div>
+                <div class="border-l-3 border-green-400 px-3 py-1 mb-4 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
+                    <div class="text-[#DDDDDD]">Rewards <i class="fa-solid fa-gift text-[12px] text-green-400"></i></div>
+                    <div class="text-[#DDDDDD]">
+                        <span id="rewardAmount">0</span> TEA
+                    </div>
+                </div>
+                <div id="stakeUnstake" style="display: none;">
+                    <div class="grid grid-cols-3 gap-2">
+                        <button
+                            class="py-1.5 bg-green-400 text-slate-900 hover:bg-green-600 hover:text-slate-300 rounded-md"
+                            id="stakeButton"><i class="fa-solid fa-coins text-[13px]"></i> Stake</button>
+                        <button
+                            class="py-1.5 bg-green-400 text-slate-900 hover:bg-green-600 hover:text-slate-300 rounded-md"
+                            id="unstakeButton"><i class="fa-solid fa-arrow-right text-[13px]"></i> Unstake</button>
+                        <button
+                            class="py-1.5 bg-green-400 text-slate-900 hover:bg-green-600 hover:text-slate-300 rounded-md"
+                            onclick="claimReward()"><i class="fa-solid fa-gift text-[13px]"></i> Claim</button>
+                    </div>
+                </div>
+                <button id="connectWallet"
+                    class="py-1.5 w-full bg-green-400 text-slate-900 hover:bg-green-600 hover:text-slate-300 rounded-md cursor-pointer"
+                    onclick="init()">Connect
+                    Wallet</button>
+                <div class="border-l-3 border-green-400 px-3 pt-1 pb-3 my-4 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg hidden"
+                    id="stakeSection">
+                    <h3 class="text-[#DDDDDD]">Stake: </h3>
+                    <div class="flex items-center justify-center">
+                        <div class="overflow-hidden flex w-full border-1 border-[#DDDDDD] rounded-md">
+                            <input id="stakeAmount" type="text"
+                                class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none" placeholder="Enter amount">
+                            <button
+                                class="bg-green-400 text-[14px] text-slate-900 py-1.5 px-2 ml-2 hover:bg-green-600 hover:text-slate-300 font-Nunito"
+                                id="maxStakeAmount" onclick="setMaxStakeAmount()">Max</button>
+                        </div>
+                        <button
+                            class="bg-green-400 text-slate-900 text-[16px] block hover:bg-green-600 hover:text-slate-300 px-2 py-1.5 ml-1 rounded-md font-Nunito"
+                            onclick="stake()">Stake</button>
+                    </div>
+                </div>
+                <div class="border-l-3 border-green-400 px-3 pt-1 pb-3 my-4 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg hidden"
+                    id="unstakeSection">
+                    <h3 class="text-[#DDDDDD]">Unstake: </h3>
+                    <div class="flex items-center justify-center">
+                        <div class="overflow-hidden flex w-full border-1 border-[#DDDDDD] rounded-md">
+                            <input id="unstakeAmount" type="text"
+                                class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none" placeholder="Enter amount">
+                            <button
+                                class="bg-green-400 text-[14px] text-slate-900 py-1.5 px-2 ml-2 hover:bg-green-600 hover:text-slate-300 font-Nunito"
+                                id="maxStakeAmount" onclick="setMaxUnstakeAmount()">Max</button>
+                        </div>
+                        <button
+                            class="bg-green-400 text-slate-900 text-[16px] block hover:bg-green-600 hover:text-slate-300 px-2 py-1.5 ml-1 rounded-md font-Nunito"
+                            onclick="unstakePartial()">Unstake</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="container w-full h-full flex justify-center items-center">
+            <div
+                class="mt-10 md:mt-0 mx-2 px-4 pt-1 pb-4 w-full flex-row justify-center items-center backdrop-blur-lg bg-white/5 rounded-lg shadow-md">
+                <h3 class="text-[#DDDDDD] text-[20px] mb-2 pl-1 font-Nunito">AIT Staking</h3>
+                <div class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
+                    <div class="text-[#DDDDDD]">Balance <i class="fa-solid fa-wallet text-[12px] text-green-400"></i></div>
+                    <div class="text-[#DDDDDD]">
+                        <span id="aitbalance">0</span> <span>AIT</span>
+                    </div>
+                </div>
+                <div class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
+                    <div class="text-[#DDDDDD]">APY <i class="fa-solid fa-seedling text-[12px] text-green-400"></i></div>
+                    <div class="text-[#DDDDDD]">
+                        <span>77%</span>
+                    </div>
+                </div>
+                <div class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
+                    <div class="text-[#DDDDDD]">Staked <i class="fa-solid fa-lock text-[12px] text-green-400"></i></div>
+                    <div class="text-[#DDDDDD]">
+                        <span id="aitStakedAmount">0</span> AIT
+                    </div>
+                </div>
+                <div class="border-l-3 border-green-400 px-3 py-1 mb-4 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
+                    <div class="text-[#DDDDDD]">Rewards <i class="fa-solid fa-gift text-[12px] text-green-400"></i></div>
+                    <div class="text-[#DDDDDD]">
+                        <span id="aitRewardAmount">0</span> TEA
+                    </div>
+                </div>
+                <div id="aitStakeUnstake" style="display: none;">
+                    <div class="grid grid-cols-3 gap-2">
+                        <button
+                            class="py-1.5 bg-green-400 text-slate-900 hover:bg-green-600 hover:text-slate-300 rounded-md"
+                            id="aitStakeButton"><i class="fa-solid fa-coins text-[13px]"></i> Stake</button>
+                        <button
+                            class="py-1.5 bg-green-400 text-slate-900 hover:bg-green-600 hover:text-slate-300 rounded-md"
+                            id="aitUnstakeButton"><i class="fa-solid fa-arrow-right text-[13px]"></i> Unstake</button>
+                        <button
+                            class="py-1.5 bg-green-400 text-slate-900 hover:bg-green-600 hover:text-slate-300 rounded-md"
+                            onclick="aitClaimReward()"><i class="fa-solid fa-gift text-[13px]"></i> Claim</button>
+                    </div>
+                </div>
+                <button id="aitConnectWallet"
+                    class="py-1.5 w-full bg-green-400 text-slate-900 hover:bg-green-600 hover:text-slate-300 rounded-md cursor-pointer"
+                    style="display: block;" onclick="init()">Connect Wallet</button>
+                <div class="border-l-3 border-green-400 px-3 pt-1 pb-3 my-4 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg hidden"
+                    id="aitStakeSection">
+                    <h3 class="text-[#DDDDDD]">Stake: </h3>
+                    <div class="flex items-center justify-center">
+                        <div class="overflow-hidden flex w-full border-1 border-[#DDDDDD] rounded-md">
+                            <input id="aitStakeAmount" type="text"
+                                class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none" placeholder="Enter amount">
+                            <button
+                                class="bg-green-400 text-[14px] text-slate-900 py-1.5 px-2 ml-2 hover:bg-green-600 hover:text-slate-300 font-Nunito"
+                                id="aitMaxStakeAmount" onclick="aitSetMaxStakeAmount()">Max</button>
+                        </div>
+                        <button
+                            class="bg-green-400 text-slate-900 text-[16px] block hover:bg-green-600 hover:text-slate-300 px-2 py-1.5 ml-1 rounded-md font-Nunito"
+                            onclick="aitStake()">Stake</button>
+                    </div>
+                </div>
+                <div class="border-l-3 border-green-400 px-3 pt-1 pb-3 my-4 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg hidden"
+                    id="aitUnstakeSection">
+                    <h3 class="text-[#DDDDDD]">Unstake: </h3>
+                    <div class="flex items-center justify-center">
+                        <div class="overflow-hidden flex w-full border-1 border-[#DDDDDD] rounded-md">
+                            <input id="aitUnstakeAmount" type="text"
+                                class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none" placeholder="Enter amount">
+                            <button
+                                class="bg-green-400 text-[14px] text-slate-900 py-1.5 px-2 ml-2 hover:bg-green-600 hover:text-slate-300 font-Nunito"
+                                id="aitMaxStakeAmount" onclick="aitSetMaxUnstakeAmount()">Max</button>
+                        </div>
+                        <button
+                            class="bg-green-400 text-slate-900 text-[16px] block hover:bg-green-600 hover:text-slate-300 px-2 py-1.5 ml-1 rounded-md font-Nunito"
+                            onclick="aitUnstakePartial()">Unstake</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-center items-center mt-16 mb-6 gap-2 text-[18px] text-slate-300 md:absolute md:bottom-30 md:left-1/2 md:transform md:-translate-x-1/2">
+        <a href="https://x.com/m_amarudinn2">
+            <div class="bg-white/5 shadow-lg w-8 h-8 flex justify-center items-center rounded-full"><i
+                    class="fa-brands fa-x-twitter"></i></div>
+        </a>
+        <a href="https://t.me/AirdropIntelligent">
+            <div class="bg-white/5 shadow-lg w-8 h-8 flex justify-center items-center rounded-full"><i
+                    class="fa-brands fa-telegram"></i></div>
+        </a>
+        <a href="#">
+            <div class="bg-white/5 shadow-lg w-8 h-8 flex justify-center items-center rounded-full"><i
+                    class="fa-brands fa-github"></i></div>
+        </a>
+    </div>
+    <div class="relative mt-3 py-2 backdrop-blur-lg bg-white/5 shadow-lg md:w-1/2 md:absolute md:bottom-0 md:left-1/2 md:transform md:-translate-x-1/2">
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 border-t-2 border-green-400 w-1/4 rounded-lg">
+        </div>
+        <h3 class="text-slate-300 text-2xl mb-3 flex justify-center items-center">Tea Assam</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 md:my-5 md:rounded-md place-items-center">
+            <a href="https://tea.xyz/" class="text-[16px] text-slate-300 hover:text-slate-300/70 py-0.5 px-1.5 rounded-md">About Tea</a>
+            <a href="https://docs.tea.xyz/tea-white-paper" class="text-[16px] text-slate-300 hover:text-slate-300/70 py-0.5 px-1.5 rounded-md">Documentation</a>
+            <a href="https://faucet-assam.tea.xyz/" class="text-[16px] text-slate-300 hover:text-slate-300/70 py-0.5 px-1.5 rounded-md">Faucet</a>
+            <a href="https://assam.tea.xyz/" class="text-[16px] text-slate-300 hover:text-slate-300/70 py-0.5 px-1.5 rounded-md">Explorer</a>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.4/ethers.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
 
 </html>

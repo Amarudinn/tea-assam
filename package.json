@@ -1,12 +1,30 @@
 {
-  "name": "tea-assam",
+  "name": "dapps",
   "version": "1.0.0",
+  "description": "dapps farm staking & sport betting",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amarudinn/dapps.git"
+  },
+  "keywords": [
+    "dapps",
+    "farm",
+    "staking",
+    "sport",
+    "betting"
+  ],
+  "author": "amarudin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Amarudinn/dapps/issues"
+  },
+  "homepage": "https://github.com/Amarudinn/dapps#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.8",
+    "tailwindcss": "^4.0.8"
+  }
 }
