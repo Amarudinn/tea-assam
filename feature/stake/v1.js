@@ -13,16 +13,6 @@ const unstakeSection = document.getElementById('unstakeSection');
 let stakeClicked = false;
 let unstakeClicked = false;
 
-stakeButton.addEventListener('click', () => {
-	if (stakeClicked) {
-		stakeSection.classList.add('hidden');
-	} else {
-		stakeSection.classList.remove('hidden');
-		unstakeSection.classList.add('hidden');
-	}
-	stakeClicked = !stakeClicked;
-});
-
 unstakeButton.addEventListener('click', () => {
 	if (unstakeClicked) {
 		unstakeSection.classList.add('hidden');
@@ -41,16 +31,6 @@ const aitUnstakeSection = document.getElementById('aitUnstakeSection');
 let aitStakeClicked = false;
 let aitUnstakeClicked = false;
 
-aitStakeButton.addEventListener('click', () => {
-	if (aitStakeClicked) {
-		aitStakeSection.classList.add('hidden');
-	} else {
-		aitStakeSection.classList.remove('hidden');
-		aitUnstakeSection.classList.add('hidden');
-	}
-	aitStakeClicked = !aitStakeClicked;
-});
-
 aitUnstakeButton.addEventListener('click', () => {
 	if (aitUnstakeClicked) {
 		aitUnstakeSection.classList.add('hidden');
@@ -61,11 +41,31 @@ aitUnstakeButton.addEventListener('click', () => {
 	aitUnstakeClicked = !aitUnstakeClicked;
 });
 
-const nativeStakingContract = '0x1C3849976c625bc36eFeA44fdD8147feFe51828c'; // Native Staking Contract
+const nativeStakingContract = '0x9A445726708a7e4C794918BaEc41C0c0B424D11C'; // Native Staking Contract
 const aitContractAddress = '0xd8681C1F60Ba30982292CD22982Aa2A9f30adf2c'; // AIT Contract Address
-const aitStakingContract = '0x627956d36d83dCD65299018fB0FEC1Fff00C1237'; // AIT Staking Contract
+const aitStakingContract = '0x522684126431A2aE26947d8D29c33357C62000E4'; // AIT Staking Contract
 const claimAitContract = '0x08F80F8FFe972A49792b743594F65d7cA0d72c78'; // Claim AIT Token
 const nativeContractABI = [
+	{
+		"inputs": [],
+		"name": "claimReward",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "newRewardRate",
+				"type": "uint256"
+			}
+		],
+		"name": "setRewardRate",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -91,6 +91,13 @@ const nativeContractABI = [
 		"type": "event"
 	},
 	{
+		"inputs": [],
+		"name": "stake",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -108,6 +115,13 @@ const nativeContractABI = [
 		],
 		"name": "Staked",
 		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "unstake",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
 		"anonymous": false,
@@ -129,17 +143,21 @@ const nativeContractABI = [
 		"type": "event"
 	},
 	{
-		"inputs": [],
-		"name": "SCALE",
-		"outputs": [
+		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "",
+				"name": "amount",
 				"type": "uint256"
 			}
 		],
-		"stateMutability": "view",
+		"name": "unstakePartial",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
 	},
 	{
 		"inputs": [
@@ -161,13 +179,6 @@ const nativeContractABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "claimReward",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -175,7 +186,7 @@ const nativeContractABI = [
 				"type": "address"
 			}
 		],
-		"name": "getPendingReward",
+		"name": "getReward",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -226,19 +237,6 @@ const nativeContractABI = [
 	},
 	{
 		"inputs": [],
-		"name": "getTotalStaking",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
 		"name": "owner",
 		"outputs": [
 			{
@@ -264,23 +262,16 @@ const nativeContractABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [
+		"inputs": [],
+		"name": "SCALE",
+		"outputs": [
 			{
 				"internalType": "uint256",
-				"name": "newRewardRate",
+				"name": "",
 				"type": "uint256"
 			}
 		],
-		"name": "setRewardRate",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "stake",
-		"outputs": [],
-		"stateMutability": "payable",
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -312,52 +303,10 @@ const nativeContractABI = [
 				"internalType": "uint256",
 				"name": "totalReward",
 				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "pendingReward",
-				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "totalStaking",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "unstake",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "unstakePartial",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"stateMutability": "payable",
-		"type": "receive"
 	}
 ];
 
@@ -668,314 +617,300 @@ const aitContractABI = [
 
 const aitStakingContractABI = [
 	{
-	  "inputs": [],
-	  "stateMutability": "nonpayable",
-	  "type": "constructor"
+		"inputs": [],
+		"name": "claimReward",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
-	  "anonymous": false,
-	  "inputs": [
-		{
-		  "indexed": true,
-		  "internalType": "address",
-		  "name": "user",
-		  "type": "address"
-		},
-		{
-		  "indexed": false,
-		  "internalType": "uint256",
-		  "name": "amount",
-		  "type": "uint256"
-		}
-	  ],
-	  "name": "RewardClaimed",
-	  "type": "event"
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "newRewardRate",
+				"type": "uint256"
+			}
+		],
+		"name": "setRewardRate",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
-	  "anonymous": false,
-	  "inputs": [
-		{
-		  "indexed": true,
-		  "internalType": "address",
-		  "name": "user",
-		  "type": "address"
-		},
-		{
-		  "indexed": false,
-		  "internalType": "uint256",
-		  "name": "amount",
-		  "type": "uint256"
-		}
-	  ],
-	  "name": "Staked",
-	  "type": "event"
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
 	},
 	{
-	  "anonymous": false,
-	  "inputs": [
-		{
-		  "indexed": true,
-		  "internalType": "address",
-		  "name": "user",
-		  "type": "address"
-		},
-		{
-		  "indexed": false,
-		  "internalType": "uint256",
-		  "name": "amount",
-		  "type": "uint256"
-		}
-	  ],
-	  "name": "Unstaked",
-	  "type": "event"
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "RewardClaimed",
+		"type": "event"
 	},
 	{
-	  "inputs": [],
-	  "name": "SCALE",
-	  "outputs": [
-		{
-		  "internalType": "uint256",
-		  "name": "",
-		  "type": "uint256"
-		}
-	  ],
-	  "stateMutability": "view",
-	  "type": "function"
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "stake",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
-	  "inputs": [
-		{
-		  "internalType": "address",
-		  "name": "user",
-		  "type": "address"
-		}
-	  ],
-	  "name": "calculateReward",
-	  "outputs": [
-		{
-		  "internalType": "uint256",
-		  "name": "",
-		  "type": "uint256"
-		}
-	  ],
-	  "stateMutability": "view",
-	  "type": "function"
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "Staked",
+		"type": "event"
 	},
 	{
-	  "inputs": [],
-	  "name": "claimReward",
-	  "outputs": [],
-	  "stateMutability": "nonpayable",
-	  "type": "function"
+		"inputs": [],
+		"name": "unstake",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
-	  "inputs": [
-		{
-		  "internalType": "address",
-		  "name": "user",
-		  "type": "address"
-		}
-	  ],
-	  "name": "getPendingReward",
-	  "outputs": [
-		{
-		  "internalType": "uint256",
-		  "name": "",
-		  "type": "uint256"
-		}
-	  ],
-	  "stateMutability": "view",
-	  "type": "function"
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "Unstaked",
+		"type": "event"
 	},
 	{
-	  "inputs": [
-		{
-		  "internalType": "address",
-		  "name": "user",
-		  "type": "address"
-		}
-	  ],
-	  "name": "getStakedAmount",
-	  "outputs": [
-		{
-		  "internalType": "uint256",
-		  "name": "",
-		  "type": "uint256"
-		}
-	  ],
-	  "stateMutability": "view",
-	  "type": "function"
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "unstakePartial",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
-	  "inputs": [
-		{
-		  "internalType": "address",
-		  "name": "user",
-		  "type": "address"
-		}
-	  ],
-	  "name": "getTotalReward",
-	  "outputs": [
-		{
-		  "internalType": "uint256",
-		  "name": "",
-		  "type": "uint256"
-		}
-	  ],
-	  "stateMutability": "view",
-	  "type": "function"
+		"stateMutability": "payable",
+		"type": "receive"
 	},
 	{
-	  "inputs": [],
-	  "name": "getTotalTokenStaked",
-	  "outputs": [
-		{
-		  "internalType": "uint256",
-		  "name": "",
-		  "type": "uint256"
-		}
-	  ],
-	  "stateMutability": "view",
-	  "type": "function"
+		"inputs": [],
+		"name": "balance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-	  "inputs": [],
-	  "name": "owner",
-	  "outputs": [
-		{
-		  "internalType": "address",
-		  "name": "",
-		  "type": "address"
-		}
-	  ],
-	  "stateMutability": "view",
-	  "type": "function"
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			}
+		],
+		"name": "calculateReward",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-	  "inputs": [],
-	  "name": "rewardRate",
-	  "outputs": [
-		{
-		  "internalType": "uint256",
-		  "name": "",
-		  "type": "uint256"
-		}
-	  ],
-	  "stateMutability": "view",
-	  "type": "function"
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			}
+		],
+		"name": "getReward",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-	  "inputs": [
-		{
-		  "internalType": "uint256",
-		  "name": "newRewardRate",
-		  "type": "uint256"
-		}
-	  ],
-	  "name": "setRewardRate",
-	  "outputs": [],
-	  "stateMutability": "nonpayable",
-	  "type": "function"
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			}
+		],
+		"name": "getStakedAmount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-	  "inputs": [
-		{
-		  "internalType": "uint256",
-		  "name": "amount",
-		  "type": "uint256"
-		}
-	  ],
-	  "name": "stake",
-	  "outputs": [],
-	  "stateMutability": "nonpayable",
-	  "type": "function"
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			}
+		],
+		"name": "getTotalReward",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-	  "inputs": [
-		{
-		  "internalType": "address",
-		  "name": "",
-		  "type": "address"
-		}
-	  ],
-	  "name": "stakes",
-	  "outputs": [
-		{
-		  "internalType": "uint256",
-		  "name": "amount",
-		  "type": "uint256"
-		},
-		{
-		  "internalType": "uint256",
-		  "name": "startTime",
-		  "type": "uint256"
-		},
-		{
-		  "internalType": "uint256",
-		  "name": "lastClaimTime",
-		  "type": "uint256"
-		},
-		{
-		  "internalType": "uint256",
-		  "name": "totalReward",
-		  "type": "uint256"
-		},
-		{
-		  "internalType": "uint256",
-		  "name": "pendingReward",
-		  "type": "uint256"
-		}
-	  ],
-	  "stateMutability": "view",
-	  "type": "function"
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-	  "inputs": [],
-	  "name": "tokenAddress",
-	  "outputs": [
-		{
-		  "internalType": "address",
-		  "name": "",
-		  "type": "address"
-		}
-	  ],
-	  "stateMutability": "view",
-	  "type": "function"
+		"inputs": [],
+		"name": "rewardRate",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-	  "inputs": [],
-	  "name": "totalTokenStaked",
-	  "outputs": [
-		{
-		  "internalType": "uint256",
-		  "name": "",
-		  "type": "uint256"
-		}
-	  ],
-	  "stateMutability": "view",
-	  "type": "function"
+		"inputs": [],
+		"name": "SCALE",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-	  "inputs": [],
-	  "name": "unstake",
-	  "outputs": [],
-	  "stateMutability": "nonpayable",
-	  "type": "function"
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "stakes",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "startTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lastClaimTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalReward",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-	  "inputs": [
-		{
-		  "internalType": "uint256",
-		  "name": "amount",
-		  "type": "uint256"
-		}
-	  ],
-	  "name": "unstakePartial",
-	  "outputs": [],
-	  "stateMutability": "nonpayable",
-	  "type": "function"
+		"inputs": [],
+		"name": "tokenAddress",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	}
-  ];
+];
 
 const claimAitContractABI = [{ "inputs": [{ "internalType": "address", "name": "_tokenAddress", "type": "address" }], "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "sender", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "FeeReceived", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "previousOwner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "newOwner", "type": "address" }], "name": "OwnershipTransferred", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "receiver", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "TokensClaimed", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "uint256", "name": "newTotalToken", "type": "uint256" }], "name": "TotalTokenUpdated", "type": "event" }, { "inputs": [], "name": "claimFee", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "claimTokens", "outputs": [], "stateMutability": "payable", "type": "function" }, { "inputs": [], "name": "getTokenBalance", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "hasClaimed", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "lastClaimTime", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "_fee", "type": "uint256" }], "name": "setClaimFee", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "_amount", "type": "uint256" }], "name": "setTokenAmount", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "tokenAddress", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "tokenAmount", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "totalToken", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "newOwner", "type": "address" }], "name": "transferOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "withdrawFees", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "withdrawTokens", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "stateMutability": "payable", "type": "receive" }];
 
@@ -1000,20 +935,15 @@ async function init() {
 			document.getElementById("aitConnectWallet").style.display = 'none';
 			document.getElementById("stakeUnstake").style.display = 'block';
 			document.getElementById("aitStakeUnstake").style.display = 'block';
-			document.getElementById("tvlnative").style.display = 'block';
-			document.getElementById("tvlait").style.display = 'block';
 
 			updateConnectButton(account);
 			initializeWeb3();
 			updateAccountBalance();
 			updateStakedAmount();
 			updateRewardAmount();
-			updateTotalStaking();
-			updateTotalStakers();
 			aitUpdateAccountBalance();
 			aitUpdateStakedAmount();
 			aitUpdateRewardAmount();
-			updateTotalTokenStaking();
 		} catch (error) {
 			console.error('Failed to connect to MetaMask:', error);
 		}
@@ -1086,8 +1016,6 @@ async function stake() {
 		updateAccountBalance();
 		updateStakedAmount();
 		updateRewardAmount();
-		updateTotalStakers();
-		updateTotalStaking();
 	} catch (error) {
 		Swal.fire({
 			position: "top-center",
@@ -1143,7 +1071,6 @@ async function aitStake() {
 		aitUpdateAccountBalance();
 		aitUpdateStakedAmount();
 		aitUpdateRewardAmount();
-		updateTotalTokenStaking();
 	} catch (error) {
 		Swal.fire({
 			position: "top-center",
@@ -1173,8 +1100,6 @@ async function unstakePartial() {
 		updateAccountBalance();
 		updateStakedAmount();
 		updateRewardAmount();
-		updateTotalStakers();
-		updateTotalStaking();
 	} catch (error) {
 		Swal.fire({
 			position: "top-center",
@@ -1204,7 +1129,6 @@ async function aitUnstakePartial() {
 		aitUpdateAccountBalance();
 		aitUpdateStakedAmount();
 		aitUpdateRewardAmount();
-		updateTotalTokenStaking();
 	} catch (error) {
 		Swal.fire({
 			position: "top-center",
@@ -1276,21 +1200,9 @@ async function updateStakedAmount() {
 
 async function updateRewardAmount() {
 	const rewardAmountElement = document.getElementById('rewardAmount');
-	const rewardAmount = await nativeContract.methods.getPendingReward(accounts[0]).call();
+	const rewardAmount = await nativeContract.methods.getReward(accounts[0]).call();
 	const formattedRewardAmount = (rewardAmount / 10 ** 18).toFixed(4);
 	rewardAmountElement.textContent = formattedRewardAmount;
-}
-
-async function updateTotalStaking() {
-    const totalStaking = await nativeContract.methods.getTotalStaking().call();
-    const totalStakingInEth = web3.utils.fromWei(totalStaking, 'ether').toString();
-    const totalStakingRounded = parseFloat(totalStakingInEth).toFixed(0);
-    document.getElementById('totalStaking').textContent = totalStakingRounded;
-}
-
-async function updateTotalStakers() {
-	const totalStakers = await nativeContract.methods.getTotalStakers().call();
-	document.getElementById('totalStakers').textContent = totalStakers;
 }
 
 async function aitUpdateStakedAmount() {
@@ -1302,16 +1214,9 @@ async function aitUpdateStakedAmount() {
 
 async function aitUpdateRewardAmount() {
 	const aitRewardAmountElement = document.getElementById('aitRewardAmount');
-	const aitRewardAmount = await aitStaking.methods.getPendingReward(accounts[0]).call();
+	const aitRewardAmount = await aitStaking.methods.getReward(accounts[0]).call();
 	const aitFormattedRewardAmount = (aitRewardAmount / 10 ** 18).toFixed(4);
 	aitRewardAmountElement.textContent = aitFormattedRewardAmount;
-}
-
-async function updateTotalTokenStaking() {
-	const totalTokenStaking = await aitStaking.methods.getTotalTokenStaked().call();
-    const totalStakingInAit = web3.utils.fromWei(totalTokenStaking, 'ether').toString();
-    const totalStakingRoundedAit = parseFloat(totalStakingInAit).toFixed(0);
-    document.getElementById('totalTokenStaking').textContent = totalStakingRoundedAit;
 }
 
 async function claimTokens() {

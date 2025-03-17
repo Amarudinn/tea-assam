@@ -8,8 +8,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Autour+One&family=Delius&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
     <title>STAKE</title>
+    <style>
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 10s linear infinite;
+        }
+    </style>
 </head>
 
 <body class="bg-slate-900">
@@ -17,9 +34,7 @@
     <nav class="backdrop-blur-lg bg-white/5 border-gray-200">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <span class="text-[16px] text-slate-300 flex justify-center items-center"
-                    style="font-family: 'Autour One', system-ui;"><i
-                        class="fa-solid fa-leaf text-[20px] mr-2 text-green-400"></i>Tea Leaf</span>
+                <span class="self-center text-[16px] whitespace-nowrap text-slate-300 font-bold">AIRDROP INTELLIGENT</span>
             </a>
             <div class="flex justify-between items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                 <div
@@ -42,7 +57,7 @@
                 <ul
                     class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-500 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
                     <li>
-                        <a href="#"
+                        <a href="/index.html"
                             class="block py-2 px-3 rounded-sm bg-gray-700/80 text-slate-300 hover:bg-gray-700/50 hover:text-slate-300/80 md:bg-gray-700/80 md:text-slate-300 md:hover:bg-gray-700/50 md:hover:text-slate-300/80 md:py-1.5 md:px-4"
                             aria-current="page">Stake</a>
                     </li>
@@ -64,74 +79,59 @@
         </div>
     </nav>
 
+    <div class="overflow-hidden md:mx-auto md:w-1/2">
+        <div class="inline-block animate-marquee whitespace-nowrap text-slate-300">
+            If you want to add stake or unstake, please claim the reward first.
+        </div>
+    </div>
+
     <div class="md:flex md:w-1/2 md:mx-auto">
         <div class="text-slate-300 ml-4 mt-10 md:mt-20 mb-4 md:mb-0 flex-row justify-center items-center">
-            <h3 class="text-[24px] tracking-[1px] font-semibold" style="font-family: 'Delius', 'cursive';">Leaf Stake
-            </h3>
-            <h3 class="text-[16px]" style="font-family: 'Delius', 'cursive';">Enjoy the rewards of staking with high APY
-            </h3>
+            <h3 class="font-extrabold text-[20px] tracking-[1px]">TEA Staking</h3>
+            <h3 class="text-[14px]">Enjoy the rewards of staking with high APY</h3>
         </div>
     </div>
 
     <div
         class="grid grid-cols-2 place-items-center w-36 border-1 border-slate-500 rounded-sm overflow-hidden mx-auto">
-        <div class="text-slate-300 border-b-2 py-1 border-green-400 hover:text-slate-300/80 w-full flex justify-center items-center cursor-pointer">V2</div>
-        <a href="/feature/stake/v1.html"><div class="text-slate-300 py-1 w-full flex justify-center items-center hover:text-slate-300/80 cursor-pointer">V1</div></a>
+        <a href="/index.html"><div class="text-slate-300 py-1 w-full flex justify-center items-center hover:text-slate-300/80 cursor-pointer">V2</div></a>
+        <div class="text-slate-300 border-b-2 py-1 border-green-400 hover:text-slate-300/80 w-full flex justify-center items-center cursor-pointer">V1</div>
     </div>
 
     <div class="md:flex md:w-1/2 md:mx-auto md:mt-6">
         <div class="container w-full h-full flex justify-center items-center">
             <div
                 class="mt-4 md:mt-0 mx-2 px-4 pt-1 pb-4 w-full flex-row justify-center items-center backdrop-blur-lg bg-white/5 rounded-lg shadow-md">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-[#DDDDDD] text-[20px]" style="font-family: 'Delius', 'cursive';">Native Staking</h3>
-                    <h3 id="tvlnative" class="text-[#DDDDDD] text-[16px]" style="display: none;">TVL <span
-                            id="totalStaking">0</span> TEA</h3>
-                </div>
-                <div class="flex gap-1 pl-1 text-[10px] my-3">
-                    <div class="py-0.5 px-1 bg-slate-900 text-sky-400">NO LOCK</div>
-                    <div class="py-0.5 px-1 bg-slate-900 text-yellow-400">HIGH APY</div>
-                    <div class="py-0.5 px-1 bg-slate-900">🔥</div>
-                </div>
-                <div
-                    class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
-                    <div class="text-[#DDDDDD]">Balance <i
-                            class="fa-solid fa-wallet text-[12px] text-green-400 bg-slate-800 p-1.5 rounded-md"></i>
-                    </div>
+                <h3 class="text-[#DDDDDD] text-[20px] mb-2 pl-1 font-Nunito">Native Staking</h3>
+                <div class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
+                    <div class="text-[#DDDDDD]">Balance <i class="fa-solid fa-wallet text-[12px] text-green-400"></i></div>
                     <div class="text-[#DDDDDD]">
                         <span id="balance">0</span> <span>TEA</span>
                     </div>
                 </div>
-                <div
-                    class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
-                    <div class="text-[#DDDDDD]">APY <i
-                            class="fa-solid fa-fire-flame-curved text-[12px] text-green-400 bg-slate-800 p-1.5 rounded-md"></i>
-                    </div>
+                <div class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
+                    <div class="text-[#DDDDDD]">APY <i class="fa-solid fa-seedling text-[12px] text-green-400"></i></div>
                     <div class="text-[#DDDDDD]">
-                        <span>146%</span>
+                        <span>500%</span>
                     </div>
                 </div>
-                <div
-                    class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
-                    <div class="text-[#DDDDDD]">Staked <i
-                            class="fa-solid fa-lock text-[12px] text-green-400 bg-slate-800 p-1.5 rounded-md"></i></div>
+                <div class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
+                    <div class="text-[#DDDDDD]">Staked <i class="fa-solid fa-lock text-[12px] text-green-400"></i></div>
                     <div class="text-[#DDDDDD]">
                         <span id="stakedAmount">0</span> TEA
                     </div>
                 </div>
-                <div
-                    class="border-l-3 border-green-400 px-3 py-1 mb-4 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
-                    <div class="text-[#DDDDDD]">Rewards <i
-                            class="fa-solid fa-gift text-[12px] text-green-400 bg-slate-800 p-1.5 rounded-md"></i></div>
+                <div class="border-l-3 border-green-400 px-3 py-1 mb-4 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
+                    <div class="text-[#DDDDDD]">Rewards <i class="fa-solid fa-gift text-[12px] text-green-400"></i></div>
                     <div class="text-[#DDDDDD]">
                         <span id="rewardAmount">0</span> TEA
                     </div>
                 </div>
                 <div id="stakeUnstake" style="display: none;">
-                    <div class="grid grid-cols-3 gap-2">
-                        <button
+                    <div class="grid grid-cols-2 gap-2">
+                        <!-- <button
                             class="py-1.5 bg-green-400 text-slate-900 hover:bg-green-600 hover:text-slate-300 rounded-md"
-                            id="stakeButton"><i class="fa-solid fa-coins text-[13px]"></i> Stake</button>
+                            id="stakeButton"><i class="fa-solid fa-coins text-[13px]"></i> Stake</button> -->
                         <button
                             class="py-1.5 bg-green-400 text-slate-900 hover:bg-green-600 hover:text-slate-300 rounded-md"
                             id="unstakeButton"><i class="fa-solid fa-arrow-right text-[13px]"></i> Unstake</button>
@@ -150,14 +150,13 @@
                     <div class="flex items-center justify-center">
                         <div class="overflow-hidden flex w-full border-1 border-[#DDDDDD] rounded-md">
                             <input id="stakeAmount" type="text"
-                                class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none"
-                                placeholder="Enter amount">
+                                class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none" placeholder="Enter amount">
                             <button
-                                class="bg-green-400 text-[14px] text-slate-900 py-1.5 px-2 ml-2 hover:bg-green-600 hover:text-slate-300"
+                                class="bg-green-400 text-[14px] text-slate-900 py-1.5 px-2 ml-2 hover:bg-green-600 hover:text-slate-300 font-Nunito"
                                 id="maxStakeAmount" onclick="setMaxStakeAmount()">Max</button>
                         </div>
                         <button
-                            class="bg-green-400 text-slate-900 text-[16px] block hover:bg-green-600 hover:text-slate-300 px-2 py-1.5 ml-1 rounded-md"
+                            class="bg-green-400 text-slate-900 text-[16px] block hover:bg-green-600 hover:text-slate-300 px-2 py-1.5 ml-1 rounded-md font-Nunito"
                             onclick="stake()">Stake</button>
                     </div>
                 </div>
@@ -167,72 +166,52 @@
                     <div class="flex items-center justify-center">
                         <div class="overflow-hidden flex w-full border-1 border-[#DDDDDD] rounded-md">
                             <input id="unstakeAmount" type="text"
-                                class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none"
-                                placeholder="Enter amount">
+                                class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none" placeholder="Enter amount">
                             <button
-                                class="bg-green-400 text-[14px] text-slate-900 py-1.5 px-2 ml-2 hover:bg-green-600 hover:text-slate-300"
+                                class="bg-green-400 text-[14px] text-slate-900 py-1.5 px-2 ml-2 hover:bg-green-600 hover:text-slate-300 font-Nunito"
                                 id="maxStakeAmount" onclick="setMaxUnstakeAmount()">Max</button>
                         </div>
                         <button
-                            class="bg-green-400 text-slate-900 text-[16px] block hover:bg-green-600 hover:text-slate-300 px-2 py-1.5 ml-1 rounded-md"
+                            class="bg-green-400 text-slate-900 text-[16px] block hover:bg-green-600 hover:text-slate-300 px-2 py-1.5 ml-1 rounded-md font-Nunito"
                             onclick="unstakePartial()">Unstake</button>
                     </div>
                 </div>
             </div>
         </div>
-
+    
         <div class="container w-full h-full flex justify-center items-center">
             <div
                 class="mt-10 md:mt-0 mx-2 px-4 pt-1 pb-4 w-full flex-row justify-center items-center backdrop-blur-lg bg-white/5 rounded-lg shadow-md">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-[#DDDDDD] text-[20px]" style="font-family: 'Delius', 'cursive';">AIT Staking</h3>
-                    <h3 id="tvlait" class="text-[#DDDDDD] text-[16px]" style="display: none;">TVL <span
-                            id="totalTokenStaking">0</span> AIT</h3>
-                </div>
-                <div class="flex gap-1 pl-1 text-[10px] my-3">
-                    <div class="py-0.5 px-1 bg-slate-900 text-sky-400">NO LOCK</div>
-                    <div class="py-0.5 px-1 bg-slate-900 text-yellow-400">HIGH APY</div>
-                    <div class="py-0.5 px-1 bg-slate-900">🔥</div>
-                </div>
-                <div
-                    class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
-                    <div class="text-[#DDDDDD]">Balance <i
-                            class="fa-solid fa-wallet text-[12px] text-green-400 bg-slate-800 p-1.5 rounded-md"></i>
-                    </div>
+                <h3 class="text-[#DDDDDD] text-[20px] mb-2 pl-1 font-Nunito">AIT Staking</h3>
+                <div class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
+                    <div class="text-[#DDDDDD]">Balance <i class="fa-solid fa-wallet text-[12px] text-green-400"></i></div>
                     <div class="text-[#DDDDDD]">
                         <span id="aitbalance">0</span> <span>AIT</span>
                     </div>
                 </div>
-                <div
-                    class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
-                    <div class="text-[#DDDDDD]">APY <i
-                            class="fa-solid fa-fire-flame-curved text-[12px] text-green-400 bg-slate-800 p-1.5 rounded-md"></i>
-                    </div>
+                <div class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
+                    <div class="text-[#DDDDDD]">APY <i class="fa-solid fa-seedling text-[12px] text-green-400"></i></div>
                     <div class="text-[#DDDDDD]">
-                        <span>21%</span>
+                        <span>77%</span>
                     </div>
                 </div>
-                <div
-                    class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
-                    <div class="text-[#DDDDDD]">Staked <i
-                            class="fa-solid fa-lock text-[12px] text-green-400 bg-slate-800 p-1.5 rounded-md"></i></div>
+                <div class="border-l-3 border-green-400 px-3 py-1 mb-3 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
+                    <div class="text-[#DDDDDD]">Staked <i class="fa-solid fa-lock text-[12px] text-green-400"></i></div>
                     <div class="text-[#DDDDDD]">
                         <span id="aitStakedAmount">0</span> AIT
                     </div>
                 </div>
-                <div
-                    class="border-l-3 border-green-400 px-3 py-1 mb-4 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
-                    <div class="text-[#DDDDDD]">Rewards <i
-                            class="fa-solid fa-gift text-[12px] text-green-400 bg-slate-800 p-1.5 rounded-md"></i></div>
+                <div class="border-l-3 border-green-400 px-3 py-1 mb-4 backdrop-blur-lg bg-white/5 shadow-lg rounded-lg">
+                    <div class="text-[#DDDDDD]">Rewards <i class="fa-solid fa-gift text-[12px] text-green-400"></i></div>
                     <div class="text-[#DDDDDD]">
                         <span id="aitRewardAmount">0</span> TEA
                     </div>
                 </div>
                 <div id="aitStakeUnstake" style="display: none;">
-                    <div class="grid grid-cols-3 gap-2">
-                        <button
+                    <div class="grid grid-cols-2 gap-2">
+                        <!-- <button
                             class="py-1.5 bg-green-400 text-slate-900 hover:bg-green-600 hover:text-slate-300 rounded-md"
-                            id="aitStakeButton"><i class="fa-solid fa-coins text-[13px]"></i> Stake</button>
+                            id="aitStakeButton"><i class="fa-solid fa-coins text-[13px]"></i> Stake</button> -->
                         <button
                             class="py-1.5 bg-green-400 text-slate-900 hover:bg-green-600 hover:text-slate-300 rounded-md"
                             id="aitUnstakeButton"><i class="fa-solid fa-arrow-right text-[13px]"></i> Unstake</button>
@@ -250,14 +229,13 @@
                     <div class="flex items-center justify-center">
                         <div class="overflow-hidden flex w-full border-1 border-[#DDDDDD] rounded-md">
                             <input id="aitStakeAmount" type="text"
-                                class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none"
-                                placeholder="Enter amount">
+                                class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none" placeholder="Enter amount">
                             <button
-                                class="bg-green-400 text-[14px] text-slate-900 py-1.5 px-2 ml-2 hover:bg-green-600 hover:text-slate-300"
+                                class="bg-green-400 text-[14px] text-slate-900 py-1.5 px-2 ml-2 hover:bg-green-600 hover:text-slate-300 font-Nunito"
                                 id="aitMaxStakeAmount" onclick="aitSetMaxStakeAmount()">Max</button>
                         </div>
                         <button
-                            class="bg-green-400 text-slate-900 text-[16px] block hover:bg-green-600 hover:text-slate-300 px-2 py-1.5 ml-1 rounded-md"
+                            class="bg-green-400 text-slate-900 text-[16px] block hover:bg-green-600 hover:text-slate-300 px-2 py-1.5 ml-1 rounded-md font-Nunito"
                             onclick="aitStake()">Stake</button>
                     </div>
                 </div>
@@ -267,14 +245,13 @@
                     <div class="flex items-center justify-center">
                         <div class="overflow-hidden flex w-full border-1 border-[#DDDDDD] rounded-md">
                             <input id="aitUnstakeAmount" type="text"
-                                class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none"
-                                placeholder="Enter amount">
+                                class="w-full text-[#DDDDDD] ml-1 bg-transparent outline-none" placeholder="Enter amount">
                             <button
-                                class="bg-green-400 text-[14px] text-slate-900 py-1.5 px-2 ml-2 hover:bg-green-600 hover:text-slate-300"
+                                class="bg-green-400 text-[14px] text-slate-900 py-1.5 px-2 ml-2 hover:bg-green-600 hover:text-slate-300 font-Nunito"
                                 id="aitMaxStakeAmount" onclick="aitSetMaxUnstakeAmount()">Max</button>
                         </div>
                         <button
-                            class="bg-green-400 text-slate-900 text-[16px] block hover:bg-green-600 hover:text-slate-300 px-2 py-1.5 ml-1 rounded-md"
+                            class="bg-green-400 text-slate-900 text-[16px] block hover:bg-green-600 hover:text-slate-300 px-2 py-1.5 ml-1 rounded-md font-Nunito"
                             onclick="aitUnstakePartial()">Unstake</button>
                     </div>
                 </div>
@@ -282,8 +259,7 @@
         </div>
     </div>
 
-    <div
-        class="flex justify-center items-center mt-16 mb-6 gap-2 text-[18px] text-slate-300 md:absolute md:bottom-0 md:left-1/2 md:transform md:-translate-x-1/2">
+    <div class="flex justify-center items-center mt-16 mb-6 gap-2 text-[18px] text-slate-300 md:absolute md:bottom-30 md:left-1/2 md:transform md:-translate-x-1/2">
         <a href="https://x.com/m_amarudinn2">
             <div class="bg-white/5 shadow-lg w-8 h-8 flex justify-center items-center rounded-full"><i
                     class="fa-brands fa-x-twitter"></i></div>
@@ -297,8 +273,19 @@
                     class="fa-brands fa-github"></i></div>
         </a>
     </div>
+    <div class="relative mt-3 py-2 backdrop-blur-lg bg-white/5 shadow-lg md:w-1/2 md:absolute md:bottom-0 md:left-1/2 md:transform md:-translate-x-1/2">
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 border-t-2 border-green-400 w-1/4 rounded-lg">
+        </div>
+        <h3 class="text-slate-300 text-2xl mb-3 flex justify-center items-center">Tea Assam</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 md:my-5 md:rounded-md place-items-center">
+            <a href="https://tea.xyz/" class="text-[16px] text-slate-300 hover:text-slate-300/70 py-0.5 px-1.5 rounded-md">About Tea</a>
+            <a href="https://docs.tea.xyz/tea-white-paper" class="text-[16px] text-slate-300 hover:text-slate-300/70 py-0.5 px-1.5 rounded-md">Documentation</a>
+            <a href="https://faucet-assam.tea.xyz/" class="text-[16px] text-slate-300 hover:text-slate-300/70 py-0.5 px-1.5 rounded-md">Faucet</a>
+            <a href="https://assam.tea.xyz/" class="text-[16px] text-slate-300 hover:text-slate-300/70 py-0.5 px-1.5 rounded-md">Explorer</a>
+        </div>
+    </div>
 
-    <script src="index.js"></script>
+    <script src="v1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.4/ethers.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
