@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Amarudinn/dapps.git"
+    "url": "git+https://github.com/Amarudinn/tea-assam.git"
   },
   "keywords": [
     "dapps",
@@ -20,9 +20,9 @@
   "author": "amarudin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Amarudinn/dapps/issues"
+    "url": "https://github.com/Amarudinn/tea-assam/issues"
   },
-  "homepage": "https://github.com/Amarudinn/dapps#readme",
+  "homepage": "https://github.com/Amarudinn/tea-assam#readme",
   "dependencies": {
     "@tailwindcss/cli": "^4.0.8",
     "tailwindcss": "^4.0.8"
