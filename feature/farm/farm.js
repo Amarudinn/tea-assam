@@ -2548,21 +2548,21 @@ async function claimRewardTiga() {
 async function updateStakedAmount() {
     const stakedAmountElement = document.getElementById('stakedAmount');
     const stakedAmount = await AIT_STAKING_CONTRACT.methods.getStakedAmount(accounts[0]).call();
-    const formattedStakedAmount = (stakedAmount / 10 ** 18).toFixed(4);
+    const formattedStakedAmount = (stakedAmount / 10 ** 18).toFixed(2);
     stakedAmountElement.textContent = formattedStakedAmount;
 }
 
 async function updateStakedAmountDua() {
     const stakedAmountElement = document.getElementById('stakedAmountDua');
     const stakedAmount = await GTEA_STAKING_CONTRACT.methods.getStakedAmount(accounts[0]).call();
-    const formattedStakedAmount = (stakedAmount / 10 ** 18).toFixed(4);
+    const formattedStakedAmount = (stakedAmount / 10 ** 18).toFixed(2);
     stakedAmountElement.textContent = formattedStakedAmount;
 }
 
 async function updateStakedAmountTiga() {
     const stakedAmountElement = document.getElementById('stakedAmountTiga');
     const stakedAmount = await TM_STAKING_CONTRACT.methods.getStakedAmount(accounts[0]).call();
-    const formattedStakedAmount = (stakedAmount / 10 ** 18).toFixed(4);
+    const formattedStakedAmount = (stakedAmount / 10 ** 18).toFixed(2);
     stakedAmountElement.textContent = formattedStakedAmount;
 }
 
