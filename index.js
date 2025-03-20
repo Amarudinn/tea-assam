@@ -1281,6 +1281,8 @@ async function updateRewardAmount() {
 	rewardAmountElement.textContent = formattedRewardAmount;
 }
 
+setInterval(updateRewardAmount, 1000);
+
 async function updateTotalStaking() {
     const totalStaking = await nativeContract.methods.getTotalStaking().call();
     const totalStakingInEth = web3.utils.fromWei(totalStaking, 'ether').toString();
@@ -1306,6 +1308,8 @@ async function aitUpdateRewardAmount() {
 	const aitFormattedRewardAmount = (aitRewardAmount / 10 ** 18).toFixed(4);
 	aitRewardAmountElement.textContent = aitFormattedRewardAmount;
 }
+
+setInterval(aitUpdateRewardAmount, 1000);
 
 async function updateTotalTokenStaking() {
 	const totalTokenStaking = await aitStaking.methods.getTotalTokenStaked().call();
